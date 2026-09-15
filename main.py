@@ -35,8 +35,8 @@ if success:
   good = 0
 
   # Рахуємо оцінки за допомогою циклу for
-  for mark in my_grades:
-    if mark <= 4:
+  for item in my_grades:
+    if item <= 4:
       bad += 1
     else:
       good += 1
@@ -46,7 +46,6 @@ if success:
 
 else:
   print("\nНеправильний логін або пароль!")
-
 
 
 
