@@ -1,52 +1,37 @@
-# Дані 4 користувачів (логін, пароль і список оцінок для кожного)
-l1, p1, g1 = "arseniy", "123", [9, 2, 5, 7, 3, 4]
-l2, p2, g2 = "olena", "321", [10, 12, 4, 3, 5]
-l3, p3, g3 = "max", "111", [5, 6, 7, 2, 1, 9]
-l4, p4, g4 = "katia", "222", [12, 11, 9, 4, 8]
-
-# Запитуємо дані у користувача
-user_login = input("Логін: ")
-user_pass = input("Пароль: ")
-
-# Змінні для результату
-my_grades = []
-success = False
-
-# Перевіряємо кожного користувача окремо
-if user_login == l1 and user_pass == p1:
-  my_grades = g1
-  success = True
-elif user_login == l2 and user_pass == p2:
-  my_grades = g2
-  success = True
-elif user_login == l3 and user_pass == p3:
-  my_grades = g3
-  success = True
-elif user_login == l4 and user_pass == p4:
-  my_grades = g4
-  success = True
-
-# Виводимо результат залежно від успішності входу
-if success:
-  print("\nУспішний вхід!")
-  print("Усі оцінки:", *my_grades)
-
-  bad = 0
-  good = 0
-
-  # Рахуємо оцінки за допомогою циклу for
-  for item in my_grades:
-    if item <= 4:
-      bad += 1
+def main():
+    users_data={ "student1":{'password':"1234",
+                             'grades':[2,10,9,10,6]
+                             },
+                 "student2":{'password':"2345",
+                             'grades':[10,2,12,5,6]
+                             },
+                 "student3":{'password':'3456',
+                             'grades':[5,5,8,8,9]
+                             },
+                 "student4": {'password':'4567',
+                              'grades':[7,7,8,2,3]
+                              }
+                 }
+    print('СИСТЕМА ПЕРЕГЛЯДУ ОЦІНОК')
+    input_login=input('Введіт логін: ').strip()
+    input_password=input('Введіть пароль: ').strip()
+    if input_login in users_data and users_data[input_login]['password']==input_password:
+         print(f"вітаємо, {input_login}! авторизація успішна/n")
+         grades=users_data[input_login]['grades']
+         satisfactory_count=0
+         unsatisfactory_count=0
+         for grade in grades:
+             if 5 <= grade <=10:
+                 satisfactory_count+=1
+             elif 1<=grade<=4:
+                 unsatisfactory_count+=1
+         print(f'твої оцінки: {grades}')
+         print(f'хороші оцінки (5-12): {satisfactory_count}')
+         print(f'погані оцінки: {unsatisfactory_count}')
     else:
-      good += 1
-
-  print("Незадовільні (1-4):", bad)
-  print("Задовільні (5-12):", good)
-
-else:
-  print("\nНеправильний логін або пароль!")
-
+        print('/n неправильний логін або пароль')
+if __name__ == '__main__':
+    main()
 
 
 
